@@ -1,81 +1,49 @@
 package model;
-import repository.carrinho;
 
-public class Cliente {
+public abstract class Pessoa {
     private String nome;
     private String cpf;
     private String email;
 
-    private carrinho carrinhos;
 
-    public Cliente(String nome, String cpf, String email) {
+    public Pessoa(String nome, String cpf, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
-        this.carrinhos = new carrinho();
     }
 
-    public void exibiInformacoes() {
-        System.out.println("=======  CLIENTE =======");
+    public void exibirInformacoes() {
+        System.out.println("Tipo: "+ getTipo());
         System.out.println("NOME: " + nome);
         System.out.println("CPF: " + cpf);
         System.out.println("Email: " + email);
-
     }
 
-    public String getNome() {
+    public abstract String getTipo();
+    
+    public String getNome() {return nome;}
 
-        return nome;
+    public String getCpf() {return cpf;}
 
-    }
-
-    public String getCpf() {
-
-        return cpf;
-
-    }
-
-    public String getEmail() {
-
-        return email;
-    }
-
-    public carrinho getCarrinhos(){
-        return carrinhos;
-    }
+    public String getEmail() {return email;}
 
     public void setNome (String nome) {
-
         if (nome != null && !nome.isBlank()) {
-
             this.nome = nome;
-
         }
-
     }
 
     public void setCpf(String cpf) {
-
         if (cpf != null && cpf.length() == 11) {
-
             this.cpf = cpf;
         }
-
     }
 
     public void setEmail(String email) {
-
-    if (email != null && email.contains( "@")) {
-
+        if (email != null && email.contains( "@")) {
             this.email = email;
         }
-
     }
-
-
-
-
-
 }
 
 
